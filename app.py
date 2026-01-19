@@ -398,6 +398,14 @@ with tab_stats:
     st.bar_chart(df_stats, x="Categorie", y="Progres (%)")
     
     st.dataframe(
-        df_stats.style.background_gradient(cmap="RdYlGn", subset=["Progres (%)"]),
+        df_stats,
+        column_config={
+            "Progres (%)": st.column_config.ProgressColumn(
+                "Progres (%)",
+                format="%d%%",
+                min_value=0,
+                max_value=100,
+            ),
+        },
         use_container_width=True
     )
