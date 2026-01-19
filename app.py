@@ -3,140 +3,181 @@ import json
 
 # --- 1. CONFIGURARE PAGINĂ ---
 st.set_page_config(
-    page_title="Checklist Mutare: Basic vs. Pro",
-    page_icon="🏡",
-    layout="centered",
+    page_title="Checklist Complet: 201 Original + Extra",
+    page_icon="🏠",
+    layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# --- 2. STRUCTURA DE DATE REORGANIZATĂ (Must Have vs Nice to Have) ---
+# --- 2. DATELE COMPLETE (Sursă: PDF Original + Additions) ---
 checklist_data = {
-    "🍳 Bucătărie: Gătit & Electrocasnice": {
+    "🍳 Bucătărie: Electrocasnice (Appliances)": {
         "Must Have": [
-            "Oale și tigăi (Set de bază)", "Cuțite ascuțite (Chef + Pâine)", "Tocător (Lemn/Plastic)", 
-            "Fierbător apă (Kettle)", "Tigăi (Wok/Clătite)", "Făcăleț", "Sită / Strecurătoare", 
-            "Deschizător conserve", "Deschizător sticle/Tirbușon", "Răzătoare", "Polonic & Spatule",
-            "Coș de gunoi (sub chiuvetă)", "Suport tacâmuri sertar", "Scurgător vase",
-            "Pâlnie", "Piatră/Dispozitiv ascuțit cuțite"
+            "1. Aparat cafea / Presă franceză", "2. Fierbător apă (Kettle)", "3. Cuptor microunde", 
+            "4. Prăjitor pâine", "36. Foarfecă bucătărie", "39. Deschizător conserve",
+            "35. Bol salată", "43. Wok", "32. Oale și tigăi (Set)", "16. Vas Casserole"
         ],
         "Nice to Have": [
-            "Aparat cafea (Espressor/Capsule)", "Air Fryer / Multicooker", "Blender / Robot bucătărie",
-            "Prăjitor pâine", "Cântar bucătărie digital", 
-            "Aparat vidat alimente (Mâncare 3x mai rezistentă)", 
-            "SodaStream (Adio baxuri de apă)", "Organizator rotativ (Lazy Susan)",
-            "Ascuțitor electric de cuțite", "Termometru carne"
+            "5. Blender", "6. Formă brioșe (Cupcake tray)", "7. Cântar bucătărie", 
+            "26. Storcător fructe (Juice extractor)", "SodaStream (Extra)", "Air Fryer (Extra)"
         ]
     },
-    "🍽️ Bucătărie: Consumabile & Organizare": {
+    "🔪 Bucătărie: Ustensile & Gătit": {
         "Must Have": [
-            "Lichid vase & Bureți", "Saci menajeri (35L & 120L)", "Folie alimentară & Aluminiu",
-            "Hârtie de copt", "Prosoape de hârtie", "Recipiente condimente de bază",
-            "Caserole (Tupperware)", "Pungi Ziploc (diverse mărimi)", "Site scurgere chiuvetă (Sink Strainers)",
-            "Cleme sigilare pungi", "Scobitori & Elastice bani"
+            "8. Linguri măsurat", "9. Cană gradată", "10. Boluri mixare", "11. Făcăleț", 
+            "12. Sită (Sieve)", "13. Tel (Whisk)", "15. Deschizător sticle", "17. Răzătoare", 
+            "19. Tocătoare (Chopping boards)", "20. Strecurătoare (Colander)", "21. Tirbușon", 
+            "31. Deschizător conserve (Tin opener)", "37. Spatulă", "40. Clește (Tongs)", 
+            "41. Curățător legume (Peeler)", "44. Linguri de lemn", "34. Zdrobitor cartofi",
+            "24. Paletă pește (Fish slice)", "25. Presă usturoi"
         ],
         "Nice to Have": [
-            "Organizatoare frigider", "Etichete borcane (Label Maker)", "Suport tabletă (pentru rețete)",
-            "Tocător dedicat doar pentru carne", "Covorașe sertare (antiderapante)",
-            "Suport vin", "Pahare Vin/Cocktail (Set complet)"
+            "14. Grătar răcire prăjituri", "18. Feliator brânză", "22. Pahare ouă", 
+            "23. Timer ouă", "27. Capac microunde", "28. Tăvi cuptor", "30. Feliator pizza",
+            "31. Tavă pizza", "33. Suport oale fierbinți", "50. Lingură înghețată", 
+            "52. Polonic", "Ascuțitor electric cuțite (Hidden Gem)"
         ]
     },
-    "🛁 Baie & Igienă Personală": {
+    "🍽️ Bucătărie: Servire & Organizare": {
         "Must Have": [
-            "Perie WC", "Pompă desfundat (Plunger)", "Perdea duș & Inele", "Covoraș duș (textil/cauciuc)",
-            "Prosoape (Corp, Față, Mâini)", "Hârtie igienică", "Dozator săpun", "Coș gunoi mic (cu capac)",
-            "Racletă duș (Squeegee - Critic pt sticlă!)", "Uscător de păr"
+            "45. Boluri", "48. Furculițe (Masă & Desert)", "49. Pahare", 
+            "51. Cuțite (Unt, Steak, Chefi)", "54. Căni (Mugs)", "55. Farfurii (Întinse & Desert)", 
+            "56. Linguri (Supă, Desert, Ceai)", "63. Cutie pâine", "64. Suport tacâmuri sertar", 
+            "66. Tablete mașină spălat vase", "67. Scurgător vase", "79. Lichid vase", 
+            "73. Sită scurgere chiuvetă", "70. Suport prosoape hârtie", "71. Solnițe sare/piper"
         ],
         "Nice to Have": [
-            "Covoraș Diatomit (Piatră absorbantă)",
-            "Capac WC cu închidere lentă (Soft close)", "Capac WC cu Bideu / Duș igienic",
-            "Suport periuțe sterilizator UV", "Cântar corporal Smart", "Oglindă cosmetică cu mărire",
-            "Termofor (Sticlă apă caldă)", "Placă păr/Ondulator"
+            "38. Zaharniță", "42. Sticlă apă", "46. Suporturi pahare (Coasters)", 
+            "47. Shaker cocktail", "53. Cană lapte", "57. Ceainic", "58. Tavă servire", 
+            "59. Carafă apă", "60. Frapieră (Wine cooler)", "61. Pahare vin", 
+            "69. Tavă cuburi gheață", "68. Coș fructe", "74. Raft condimente", 
+            "75. Organizator chiuvetă (Caddy)", "80. Suport vin", "Organizator rotativ (Lazy Susan)"
         ]
     },
-    "🛏️ Dormitor & Garderobă": {
+    "🧤 Bucătărie: Textile & Consumabile": {
         "Must Have": [
-            "Saltea & Protecție saltea", "Perne dormit", "Pilotă (sezonieră)", "Lenjerii pat (2 seturi)",
-            "Umerașe (multe!)", "Coș rufe (murdare)"
+            "82. Prosoape hârtie", "85. Prosoape bucătărie (Textil)", "84. Mănuși cuptor", 
+            "72. Pungi sandwich", "77. Folie aluminiu", "65. Folie alimentară", 
+            "78. Caserole (Tupperware)"
         ],
         "Nice to Have": [
-            "Topper Saltea (Memory Foam)", "Perne cu memorie", "Cuvertură decorativă",
-            "Umerașe catifea (antiderapante)", "Saci vidați (economie spațiu)", 
-            "Organizatoare sertare lenjerie", "Lumini ambientale sub pat"
+            "81. Șorț", "83. Șervețele masă (Napkins)", "76. Cutie ceai", 
+            "Aparat vidat alimente (Hidden Gem)"
         ]
     },
-    "🧺 Curățenie & Mentenanță Casă": {
+    "🛁 Baie: Esențiale": {
         "Must Have": [
-            "Aspirator", "Mop & Găleată", "Mătură & Făraș", "Lavete microfibră (set mare)",
-            "Soluții bază (Universal, Geamuri, WC, Clor)", "Bureți magici", "Mănuși menaj",
-            "Uscător rufe (Stander metalic)", "Masă de călcat & Fier", "Rolă scame"
+            "90. Perie WC", "89. Pompă desfundat (Plunger)", "86. Perdea duș", "87. Covoraș duș", 
+            "98. Hârtie igienică", "91. Dozator săpun", "92. Suport prosoape", 
+            "94. Prosoape baie (mari)", "96. Prosoape mâini", "Racletă duș (Squeegee - 162 in cleaning)"
         ],
         "Nice to Have": [
-            "Robot Aspirator (Roomba/Roborock)", "Aspirator vertical (fără fir)", 
-            "Uscător rufe automat (Mașină)", "Aparat curățat cu aburi", 
-            "Stație de călcat", "Coș organizator produse curățenie (Caddy)"
+            "88. Etajeră duș", "93. Cântar corporal", "95. Prosoape față", "97. Șervețele cutie", 
+            "62. Lighean (Basin)", "Covoraș Diatomit (Hidden Gem)", "Capac WC Bideu (Fancy)"
         ]
     },
-    "🛠️ Scule & Reparații (Toolbox)": {
+    "🛏️ Dormitor & Textile": {
         "Must Have": [
-            "Trusă scule bază (Ciocan, Șurubelnițe, Patent)", "Ruletă măsurat", "Cutter",
-            "Cheie aerisit calorifere (Critic Iarna!)", "Lanternă puternică", 
-            "Bandă izolieră & Scotch lat", "Super Glue", "WD-40 (Clasic)", 
-            "Scară pliantă", "Set dibluri & șuruburi mix"
+            "100. Cearșafuri pat", "101. Husă pilotă", "102. Protecție saltea", 
+            "103. Fețe pernă", "105. Pilotă", "106. Perne", "107. Suport pantofi"
         ],
         "Nice to Have": [
-            "Bormașină / Șurubelniță electrică", "Nivelă Laser / Boloboc", 
-            "Lanternă frontală (Headlamp - Mâini libere)",
-            "WD-40 Siliconic (pt. chedere geamuri termopan)", "Pistol de lipit cu silicon",
-            "Organizator șuruburi", "Detector tensiune"
+            "99. Cuvertură pat (Bed spread)", "104. Protecții perne", 
+            "Topper Saltea Memory Foam (Extra)", "Lumini ambientale sub pat (Fancy)"
         ]
     },
-    "🖥️ Tech & Home Office": {
+    "🧺 Spălătorie (Laundry)": {
         "Must Have": [
-            "Router Wi-Fi", "Prelungitoare (minim 3)", "Baterii (AA, AAA)",
-            "Birou & Scaun ergonomic", "Încărcătoare telefon", "Monitor & Periferice"
+            "108. Uscător rufe (Stander)", "110. Fier de călcat", "111. Masă de călcat", 
+            "113. Coșuri rufe", "114. Detergent rufe (Powder/Liquid)", "115. Umerașe"
         ],
         "Nice to Have": [
-            "Sistem Mesh Wi-Fi (Pt pereți groși/etaj)", "UPS (Sursă neîntreruptibilă Router/PC)", 
-            "Prelungitor cu protecție (Surge)", "Distrugător documente (Shredder)", 
-            "Imprimantă Wireless", "Management cabluri (Velcro/Clipsuri)", "Prize Inteligente (Smart Plugs)"
+            "109. Bile uscător / Șervețele uscător", "112. Sac spălare delicate", 
+            "116. Trusă cusut", "Rolă scame (Extra)"
         ]
     },
-    "🧘 Sănătate, Siguranță & Confort (Wellness)": {
+    "🖼️ Decor & Atmosferă": {
         "Must Have": [
-            "Trusă prim ajutor (Plasturi, Betadină, Analgezice)", "Termometru corporal",
-            "Detector fum / Gaz", "Stingător incendiu", "Chei de rezervă", "Plase țânțari"
+            "117. Jaluzele/Rulouri", "119. Perdele", "123. Veioze/Lămpi", 
+            "124. Becuri rezervă", "126. Oglinzi"
         ],
         "Nice to Have": [
-            "Purificator Aer (anti-praf oraș)", "Umidificator (Iarna) / Dezumidificator", 
-            "Termostat inteligent", "Cameră supraveghere", "Senzor inundație", 
-            "Lampă veghe cu senzor mișcare (hol/baie)"
+            "118. Cordoane perdele", "120. Perne decorative", "121. Pături (Throws)", 
+            "122. Covor", "125. Rame foto", "127. Ceas perete", "128. Lumânări", 
+            "129. Plante", "130. Vază", "Lampă veghe senzor (Hidden Gem)"
         ]
     },
-    "🏡 Hol, Decor & Ospitalitate": {
+    "🧹 Curățenie (Cleaning Essentials)": {
         "Must Have": [
-            "Covoraș intrare", "Cuier haine", "Suport pantofi", "Perdele / Jaluzele",
-            "Becuri de rezervă", "Oglindă mare"
+            "147. Clor/Înălbitor", "148. Soluție baie", "149. Dezinfectant", "152. Soluție universală", 
+            "153. Soluție geamuri", "154. Saci menajeri (Bin bags)", "155. Coșuri gunoi (Bins)", 
+            "156. Găleată și Mop", "158. Lavete/Cârpe", "160. Mănuși cauciuc", 
+            "163. Făraș", "164. Mătură", "165. Aspirator"
         ],
         "Nice to Have": [
-            "Încălțător (Shoe horn)", "Umbrelă de oaspeți",
-            "Papuci de casă (pentru oaspeți)", "Cartonaș QR Code Wi-Fi", 
-            "Plante naturale", "Lumânări parfumate", "Boxă inteligentă (Alexa/Google)"
+            "150. Soluție pete covoare", "151. Soluție cuptor", "157. Coș produse (Caddy)", 
+            "159. Pămătuf praf", "161. Perii frecat", "Robot Aspirator (Extra)", "Purificator Aer (Hidden Gem)"
         ]
     },
-    "🐾 Animale de Companie (Optional)": {
+    "🌳 Grădină & Exterior (Outdoor)": {
         "Must Have": [
-            "Boluri mâncare/apă", "Litieră/Pungi", "Mâncare", "Lesă"
+            "136. Mașină tuns iarba", "135. Furtun apă", "143. Mătură curte", 
+            "145. Frânghie rufe", "146. Cârlige rufe"
         ],
         "Nice to Have": [
-            "Fântână apă automată", "Camera supraveghere animale", "Aspirator dedicat păr animale"
+            "131. Grătar (BBQ)", "132. Ustensile BBQ", "133. Mănuși grădinărit", 
+            "134. Scaunel grădinărit", "137. Coș cârlige", "138. Foarfecă pomi (Pruners)", 
+            "139. Greblă", "140. Foarfecă mare (Shears)", "141. Mistrie", "142. Stropitoare", 
+            "144. Lacăt magazie"
+        ]
+    },
+    "🛠️ Bricolaj (DIY & Improvement)": {
+        "Must Have": [
+            "171. Cutter", "172. Bormașină", "173. Ciocan", "174. Ruletă măsurat", 
+            "175. Clește", "176. Șurubelnițe", "177. Bandă adezivă", "178. Trusă scule", 
+            "179. Lanternă", "182. Scară pliantă"
+        ],
+        "Nice to Have": [
+            "166. Pensule vopsit", "167. Folie protecție vopsea", "168. Trafalet", 
+            "169. Șpaclu (Scraper)", "170. Tavă vopsea", "180. Protecții pâslă mobilă", 
+            "181. Rafturi/Polițe", "183. Cutii depozitare", "184. Cârlige perete",
+            "Cheie aerisit calorifere (Hidden Gem)", "WD-40 Siliconic (Pro)"
+        ]
+    },
+    "🔥 Siguranță & Diverse (Safety & Misc)": {
+        "Must Have": [
+            "185. Detector monoxid carbon", "186. Detector fum", "189. Trusă prim ajutor", 
+            "192. Baterii", "195. Prelungitor", "200. WD40 (Clasic)", "201. Covoraș intrare"
+        ],
+        "Nice to Have": [
+            "187. Pătură ignifugă", "188. Stingător incendiu", "190. Alarmă securitate", 
+            "191. Cameră securitate", "193. Cuier haine", "194. Opritor ușă", 
+            "196. Suport chei", "197. Chibrituri/Brichetă", "198. Scotch (Sellotape)", 
+            "199. Suport umbrele", "UPS / Sursă neîntreruptibilă (Pro)"
+        ]
+    },
+    "🖥️ Home Office (Nou & Critical)": {
+        "Must Have": [
+            "Birou lucru", "Scaun ergonomic", "Monitor extern", "Prelungitor cu protecție", 
+            "Laptop/PC", "Cabluri încărcare"
+        ],
+        "Nice to Have": [
+            "Lampă birou", "Suport Laptop/Monitor", "Tastatură & Mouse", "Webcam", 
+            "Imprimantă/Scanner", "Distrugător documente"
+        ]
+    },
+    "🐾 Animale de Companie (Nou)": {
+        "Must Have": [
+            "Boluri mâncare/apă", "Mâncare", "Lesă/Zgardă", "Pungi igienice/Litieră"
+        ],
+        "Nice to Have": [
+            "Pat/Culcuș", "Jucării", "Șampon animale", "Perie blană", "Transportor"
         ]
     }
 }
 
-# --- 3. FUNCȚII AUXILIARE ---
-
+# --- 3. CALCUL TOTALURI ---
 def count_items(data):
-    """Calculează numărul total de itemi din structura nested."""
     total = 0
     for cat in data.values():
         total += len(cat.get("Must Have", [])) + len(cat.get("Nice to Have", []))
@@ -144,132 +185,62 @@ def count_items(data):
 
 total_items = count_items(checklist_data)
 
-# --- 4. GESTIONAREA STĂRII (Session State) ---
+# --- 4. GESTIONAREA STĂRII ---
 if 'checklist_state' not in st.session_state:
     st.session_state.checklist_state = {}
 
 def reset_checklist():
     st.session_state.checklist_state = {}
 
-# --- 5. INTERFAȚA UTILIZATOR (UI) ---
+# --- 5. INTERFAȚA ---
 
-st.title("🏡 Checklist Mutare: The Master List")
+st.title(f"📦 Checklist Suprem: {total_items} Articole")
 st.markdown("""
-**Ghidul Suprem pentru Mutare.** Structurat pe priorități:
-* 🚨 **Must Have:** Nu te poți muta fără ele (sau vei regreta imediat).
-* ✨ **Nice to Have:** Upgrade-uri de viață, confort și organizare pro.
+**Lista completă.** Include cele **201 articole originale** din ghidul Knight Frank, plus **noutățile moderne** (Home Office, Tech, Pets).
 """)
 
-# -- Sidebar (Meniu Lateral) --
+# -- Sidebar --
 with st.sidebar:
-    st.header("⚙️ Opțiuni")
-    
-    # Statistici
+    st.header("⚙️ Control")
     checked = sum(1 for v in st.session_state.checklist_state.values() if v)
-    
-    # Calcul procentaj
-    if total_items > 0:
-        prog_percent = int((checked / total_items) * 100)
-    else:
-        prog_percent = 0
-        
-    st.metric("Progres Total", f"{prog_percent}%", f"{checked} / {total_items} articole")
-    st.progress(prog_percent)
+    st.metric("Progres", f"{checked} / {total_items}")
+    st.progress(checked / total_items if total_items > 0 else 0)
     
     st.markdown("---")
+    st.download_button("📥 Descarcă JSON", json.dumps(st.session_state.checklist_state), "checklist_250_plus.json")
     
-    # Export/Import JSON
-    st.subheader("💾 Salvare Date")
-    json_data = json.dumps(st.session_state.checklist_state)
-    st.download_button(
-        label="📥 Descarcă Lista (JSON)",
-        data=json_data,
-        file_name="checklist_mutare_master.json",
-        mime="application/json",
-        help="Salvează progresul tău pe calculator."
-    )
-    
-    uploaded = st.file_uploader("Încarcă Listă Salvată", type=['json'])
-    if uploaded:
-        try:
-            st.session_state.checklist_state = json.load(uploaded)
-            st.success("Listă încărcată cu succes!")
-            st.rerun()
-        except:
-            st.error("Fișier invalid.")
-            
-    st.markdown("---")
-    if st.button("🗑️ Resetează Tot (Reset)"):
+    if st.button("🗑️ Resetare Completă"):
         reset_checklist()
         st.rerun()
 
-# -- Corpul Principal --
-
-if checked == total_items and total_items > 0:
-    st.balloons()
-    st.success("🎉 Felicitări! Casa ta este complet echipată la nivel PRO!")
-
-st.markdown("---")
-
-# Iterăm prin categorii
+# -- Afișare Categorii --
 for cat_name, subcats in checklist_data.items():
-    
-    # Calculăm progresul pe categorie (Must + Nice)
     items_in_cat = subcats.get("Must Have", []) + subcats.get("Nice to Have", [])
-    if not items_in_cat:
-        continue
+    if not items_in_cat: continue
         
     cat_checked = sum(1 for i in items_in_cat if st.session_state.checklist_state.get(f"{cat_name}_{i}", False))
     cat_total = len(items_in_cat)
-    
-    # Determinăm iconița de stare
     state_icon = "✅" if cat_checked == cat_total else "🟦"
     if cat_checked == 0: state_icon = "⬜"
-    
-    # Deschidem automat categoriile 'Must Have' care nu sunt terminate
-    expanded_default = False
-    must_have_items = subcats.get("Must Have", [])
-    must_checked = sum(1 for i in must_have_items if st.session_state.checklist_state.get(f"{cat_name}_{i}", False))
-    if must_have_items and must_checked < len(must_have_items):
-        expanded_default = True
 
-    # Titlu Expander
-    with st.expander(f"{state_icon} {cat_name} ({cat_checked}/{cat_total})", expanded=expanded_default):
+    with st.expander(f"{state_icon} {cat_name} ({cat_checked}/{cat_total})"):
         
-        # --- SECȚIUNEA MUST HAVE ---
         if subcats.get("Must Have"):
-            st.markdown("##### 🚨 Must Have (Esențial)")
-            cols_must = st.columns(2)
+            st.markdown("##### 🚨 Must Have")
+            cols = st.columns(2)
             for i, item in enumerate(subcats["Must Have"]):
                 key = f"{cat_name}_{item}"
-                col = cols_must[i % 2]
-                
-                # Checkbox logic
-                is_checked = st.session_state.checklist_state.get(key, False)
-                if col.checkbox(item, value=is_checked, key=key):
+                if cols[i%2].checkbox(item, value=st.session_state.checklist_state.get(key, False), key=key):
                     st.session_state.checklist_state[key] = True
                 else:
                     st.session_state.checklist_state[key] = False
         
-        # Separator vizual dacă există ambele categorii
-        if subcats.get("Must Have") and subcats.get("Nice to Have"):
-            st.markdown("---")
-        
-        # --- SECȚIUNEA NICE TO HAVE ---
         if subcats.get("Nice to Have"):
-            st.markdown("##### ✨ Nice to Have (Confort & Upgrade)")
-            cols_nice = st.columns(2)
+            st.markdown("##### ✨ Nice to Have / Extra")
+            cols = st.columns(2)
             for i, item in enumerate(subcats["Nice to Have"]):
                 key = f"{cat_name}_{item}"
-                col = cols_nice[i % 2]
-                
-                # Checkbox logic
-                is_checked = st.session_state.checklist_state.get(key, False)
-                if col.checkbox(item, value=is_checked, key=key):
+                if cols[i%2].checkbox(item, value=st.session_state.checklist_state.get(key, False), key=key):
                     st.session_state.checklist_state[key] = True
                 else:
                     st.session_state.checklist_state[key] = False
-
-# Footer
-st.markdown("---")
-st.caption("Aplicație generată cu Streamlit • Checklist organizat pe priorități")
