@@ -3,13 +3,13 @@ import json
 
 # --- 1. CONFIGURARE PAGINĂ ---
 st.set_page_config(
-    page_title="Checklist Complet: 201 Original + Extra",
+    page_title="Checklist Mutare: Ultimate Edition",
     page_icon="🏠",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# --- 2. DATELE COMPLETE (Sursă: PDF Original + Additions) ---
+# --- 2. DATELE COMPLETE (Sursă: PDF Original + Life Hacks + Modern Tech) ---
 checklist_data = {
     "🍳 Bucătărie: Electrocasnice (Appliances)": {
         "Must Have": [
@@ -19,7 +19,10 @@ checklist_data = {
         ],
         "Nice to Have": [
             "5. Blender", "6. Formă brioșe (Cupcake tray)", "7. Cântar bucătărie", 
-            "26. Storcător fructe (Juice extractor)", "SodaStream (Extra)", "Air Fryer (Extra)"
+            "26. Storcător fructe (Juice extractor)", 
+            "Air Fryer (Gătit rapid & sănătos)", 
+            "SodaStream (Adio cărat apă)",
+            "Aparat vidat alimente (Păstrează mâncarea proaspătă)"
         ]
     },
     "🔪 Bucătărie: Ustensile & Gătit": {
@@ -35,7 +38,9 @@ checklist_data = {
             "14. Grătar răcire prăjituri", "18. Feliator brânză", "22. Pahare ouă", 
             "23. Timer ouă", "27. Capac microunde", "28. Tăvi cuptor", "30. Feliator pizza",
             "31. Tavă pizza", "33. Suport oale fierbinți", "50. Lingură înghețată", 
-            "52. Polonic", "Ascuțitor electric cuțite (Hidden Gem)"
+            "52. Polonic", 
+            "Ascuțitor electric cuțite (Life Hack)",
+            "Organizator capace oale (Anti-Haos)"
         ]
     },
     "🍽️ Bucătărie: Servire & Organizare": {
@@ -51,7 +56,8 @@ checklist_data = {
             "47. Shaker cocktail", "53. Cană lapte", "57. Ceainic", "58. Tavă servire", 
             "59. Carafă apă", "60. Frapieră (Wine cooler)", "61. Pahare vin", 
             "69. Tavă cuburi gheață", "68. Coș fructe", "74. Raft condimente", 
-            "75. Organizator chiuvetă (Caddy)", "80. Suport vin", "Organizator rotativ (Lazy Susan)"
+            "75. Organizator chiuvetă (Caddy)", "80. Suport vin", 
+            "Organizator rotativ (Lazy Susan)", "Lumini LED sub dulapuri (Pentru blat)"
         ]
     },
     "🧤 Bucătărie: Textile & Consumabile": {
@@ -62,18 +68,20 @@ checklist_data = {
         ],
         "Nice to Have": [
             "81. Șorț", "83. Șervețele masă (Napkins)", "76. Cutie ceai", 
-            "Aparat vidat alimente (Hidden Gem)"
+            "Etichetator (Label Maker)"
         ]
     },
     "🛁 Baie: Esențiale": {
         "Must Have": [
             "90. Perie WC", "89. Pompă desfundat (Plunger)", "86. Perdea duș", "87. Covoraș duș", 
             "98. Hârtie igienică", "91. Dozator săpun", "92. Suport prosoape", 
-            "94. Prosoape baie (mari)", "96. Prosoape mâini", "Racletă duș (Squeegee - 162 in cleaning)"
+            "94. Prosoape baie (mari)", "96. Prosoape mâini", 
+            "Racletă duș (Squeegee - 162 in cleaning list, dar critic aici)"
         ],
         "Nice to Have": [
             "88. Etajeră duș", "93. Cântar corporal", "95. Prosoape față", "97. Șervețele cutie", 
-            "62. Lighean (Basin)", "Covoraș Diatomit (Hidden Gem)", "Capac WC Bideu (Fancy)"
+            "62. Lighean (Basin)", "Covoraș Diatomit (Uscare instantă)", 
+            "Capac WC Bideu / Duș igienic"
         ]
     },
     "🛏️ Dormitor & Textile": {
@@ -83,17 +91,21 @@ checklist_data = {
         ],
         "Nice to Have": [
             "99. Cuvertură pat (Bed spread)", "104. Protecții perne", 
-            "Topper Saltea Memory Foam (Extra)", "Lumini ambientale sub pat (Fancy)"
+            "Topper Saltea Memory Foam", "Lumini senzor dulap haine", 
+            "Draperii Blackout (Somn mai bun)"
         ]
     },
-    "🧺 Spălătorie (Laundry)": {
+    "🧺 Spălătorie & Îngrijire Haine": {
         "Must Have": [
             "108. Uscător rufe (Stander)", "110. Fier de călcat", "111. Masă de călcat", 
             "113. Coșuri rufe", "114. Detergent rufe (Powder/Liquid)", "115. Umerașe"
         ],
         "Nice to Have": [
             "109. Bile uscător / Șervețele uscător", "112. Sac spălare delicate", 
-            "116. Trusă cusut", "Rolă scame (Extra)"
+            "116. Trusă cusut", 
+            "Steamer Vertical (Călcat rapid fără masă)", 
+            "Aparat curățat scame (Lint Remover)",
+            "Umerașe catifea (Antiderapante)"
         ]
     },
     "🖼️ Decor & Atmosferă": {
@@ -104,7 +116,8 @@ checklist_data = {
         "Nice to Have": [
             "118. Cordoane perdele", "120. Perne decorative", "121. Pături (Throws)", 
             "122. Covor", "125. Rame foto", "127. Ceas perete", "128. Lumânări", 
-            "129. Plante", "130. Vază", "Lampă veghe senzor (Hidden Gem)"
+            "129. Plante", "130. Vază", 
+            "Lampă veghe cu senzor (Hol/Baie)"
         ]
     },
     "🧹 Curățenie (Cleaning Essentials)": {
@@ -116,7 +129,10 @@ checklist_data = {
         ],
         "Nice to Have": [
             "150. Soluție pete covoare", "151. Soluție cuptor", "157. Coș produse (Caddy)", 
-            "159. Pămătuf praf", "161. Perii frecat", "Robot Aspirator (Extra)", "Purificator Aer (Hidden Gem)"
+            "159. Pămătuf praf", "161. Perii frecat", 
+            "Robot Aspirator (cu stație golire)", 
+            "Mop cu pulverizator (Spray Mop)",
+            "Perie electrică rotativă (Spin Scrubber)"
         ]
     },
     "🌳 Grădină & Exterior (Outdoor)": {
@@ -141,29 +157,33 @@ checklist_data = {
             "166. Pensule vopsit", "167. Folie protecție vopsea", "168. Trafalet", 
             "169. Șpaclu (Scraper)", "170. Tavă vopsea", "180. Protecții pâslă mobilă", 
             "181. Rafturi/Polițe", "183. Cutii depozitare", "184. Cârlige perete",
-            "Cheie aerisit calorifere (Hidden Gem)", "WD-40 Siliconic (Pro)"
+            "Cheie aerisit calorifere (Critic)", "WD-40 Siliconic (Termopane)"
         ]
     },
-    "🔥 Siguranță & Diverse (Safety & Misc)": {
+    "🔥 Siguranță & Sănătate (Health & Safety)": {
         "Must Have": [
             "185. Detector monoxid carbon", "186. Detector fum", "189. Trusă prim ajutor", 
-            "192. Baterii", "195. Prelungitor", "200. WD40 (Clasic)", "201. Covoraș intrare"
+            "192. Baterii", "195. Prelungitor", "200. WD40 (Clasic)", "201. Covoraș intrare",
+            "Termometru corporal", "Medicamente bază"
         ],
         "Nice to Have": [
             "187. Pătură ignifugă", "188. Stingător incendiu", "190. Alarmă securitate", 
             "191. Cameră securitate", "193. Cuier haine", "194. Opritor ușă", 
             "196. Suport chei", "197. Chibrituri/Brichetă", "198. Scotch (Sellotape)", 
-            "199. Suport umbrele", "UPS / Sursă neîntreruptibilă (Pro)"
+            "199. Suport umbrele", 
+            "DEZUMIDIFICATOR (Game Changer)", 
+            "Purificator Aer", "Higrometru (Măsoară umiditatea)"
         ]
     },
-    "🖥️ Home Office (Nou & Critical)": {
+    "🖥️ Home Office & Tech (Nou)": {
         "Must Have": [
             "Birou lucru", "Scaun ergonomic", "Monitor extern", "Prelungitor cu protecție", 
             "Laptop/PC", "Cabluri încărcare"
         ],
         "Nice to Have": [
             "Lampă birou", "Suport Laptop/Monitor", "Tastatură & Mouse", "Webcam", 
-            "Imprimantă/Scanner", "Distrugător documente"
+            "Imprimantă/Scanner", "Distrugător documente", 
+            "Priză turn/Cub cu USB-C", "Sistem Mesh Wi-Fi"
         ]
     },
     "🐾 Animale de Companie (Nou)": {
@@ -194,9 +214,9 @@ def reset_checklist():
 
 # --- 5. INTERFAȚA ---
 
-st.title(f"📦 Checklist Suprem: {total_items} Articole")
+st.title(f"📦 Checklist Mutare: {total_items} Articole")
 st.markdown("""
-**Lista completă.** Include cele **201 articole originale** din ghidul Knight Frank, plus **noutățile moderne** (Home Office, Tech, Pets).
+**Lista Completă.** Include cele 201 articole originale, plus **Life Hacks** (Dezumidificator, Steamer, etc.) pentru o viață mai ușoară.
 """)
 
 # -- Sidebar --
@@ -207,7 +227,7 @@ with st.sidebar:
     st.progress(checked / total_items if total_items > 0 else 0)
     
     st.markdown("---")
-    st.download_button("📥 Descarcă JSON", json.dumps(st.session_state.checklist_state), "checklist_250_plus.json")
+    st.download_button("📥 Descarcă JSON", json.dumps(st.session_state.checklist_state), "checklist_ultimate.json")
     
     if st.button("🗑️ Resetare Completă"):
         reset_checklist()
@@ -223,7 +243,14 @@ for cat_name, subcats in checklist_data.items():
     state_icon = "✅" if cat_checked == cat_total else "🟦"
     if cat_checked == 0: state_icon = "⬜"
 
-    with st.expander(f"{state_icon} {cat_name} ({cat_checked}/{cat_total})"):
+    # Auto-expand dacă categoria e începută sau critică
+    auto_expand = False
+    if cat_checked > 0 and cat_checked < cat_total:
+        auto_expand = True
+    if "Sănătate" in cat_name or "Home Office" in cat_name:
+        auto_expand = True
+
+    with st.expander(f"{state_icon} {cat_name} ({cat_checked}/{cat_total})", expanded=auto_expand):
         
         if subcats.get("Must Have"):
             st.markdown("##### 🚨 Must Have")
@@ -236,7 +263,7 @@ for cat_name, subcats in checklist_data.items():
                     st.session_state.checklist_state[key] = False
         
         if subcats.get("Nice to Have"):
-            st.markdown("##### ✨ Nice to Have / Extra")
+            st.markdown("##### ✨ Nice to Have / Life Hacks")
             cols = st.columns(2)
             for i, item in enumerate(subcats["Nice to Have"]):
                 key = f"{cat_name}_{item}"
