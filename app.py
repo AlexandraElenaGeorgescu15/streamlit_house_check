@@ -10,7 +10,6 @@ st.set_page_config(
 )
 
 # --- 2. DATELE (Checklist-ul Complet) ---
-# Bazat pe lista extinsă din documentul original 
 checklist_data = {
     "🍳 Bucătărie: Electrocasnice & Gătit": [
         "Aparat cafea / Presă franceză", "Fierbător apă", "Cuptor microunde", "Prăjitor pâine", 
@@ -82,6 +81,16 @@ checklist_data = {
         "Baterii (AA, AAA)", "Cuier haine", "Opritor ușă", "Prelungitoare", "Suport chei", 
         "Chibrituri/Brichetă", "Bandă scotch", "Suport umbrele", "WD-40", "Covoraș intrare",
         "Router Wi-Fi & Cabluri", "Dosar acte casă", "Chei de rezervă", "Trusă medicamente"
+    ],
+    "🧐 Must-haves (Uitate des, dar critice)": [
+        "Site scurgere chiuvetă (Sink Strainers)", "Plase de țânțari", "Filtru apă / Cană filtrantă",
+        "Organizatoare cabluri (Velcro/Zip ties)", "Pâslă picioare mobilă (extra stoc)",
+        "Set chei de rezervă (la prieteni)", "Organizator sertar 'Junk Drawer'", "Capace WC noi"
+    ],
+    "💎 Extra Fancy (Upgrade-uri de viață)": [
+        "Robot Aspirator", "Uscător Rufe (Mașină separată)", "Termostat Inteligent",
+        "Air Fryer / Multicooker", "Lumini Inteligente / Dimmere",
+        "Capac WC cu Bideu / Duș igienic", "Topper Saltea Memory Foam"
     ]
 }
 
@@ -100,7 +109,7 @@ def reset_checklist():
 # --- 4. INTERFAȚA UTILIZATOR (UI) ---
 
 st.title("🏠 Checklist Mutare Casă Nouă")
-st.markdown(f"**201 Articole Esențiale** pentru o mutare fără stres.")
+st.markdown(f"**201+ Articole Esențiale** pentru o mutare fără stres.")
 
 # -- Bara laterală (Sidebar) pentru Control --
 with st.sidebar:
@@ -160,7 +169,12 @@ for category, items in checklist_data.items():
     # Titlu expander dinamic
     expander_title = f"{category} ({cat_checked}/{cat_total})"
     
-    with st.expander(expander_title, expanded=(cat_checked > 0 and cat_checked < cat_total)):
+    # Pentru noile categorii, le punem să fie deschise automat dacă nu sunt completate
+    default_expanded = (cat_checked > 0 and cat_checked < cat_total)
+    if "Must-haves" in category or "Extra Fancy" in category:
+        default_expanded = True
+    
+    with st.expander(expander_title, expanded=default_expanded):
         # Facem un grid de 2 coloane pentru aspect mai compact
         cols = st.columns(2)
         for i, item in enumerate(items):
@@ -179,4 +193,4 @@ for category, items in checklist_data.items():
 
 # Footer
 st.markdown("---")
-st.caption("Creat cu ❤️ folosind Streamlit. Sursă date: Knight Frank New House Checklist.")
+st.caption("Creat cu ❤️ folosind Streamlit. Sursă date: Knight Frank New House Checklist + Extra Tips.")
